@@ -1,0 +1,3 @@
+# evaluation method (evaluator function)
+
+This feature is part of the education program for children that teaches them how to properly write letters. This method primarily utilizes the Python package (gamepy) to draw using a mouse or (virtual mouse / hand motions), then using (numpy) checks whether the drawn line goes over all of the dots of each letter, and then tests to see if the matching between the dots is done in the right sequence.
