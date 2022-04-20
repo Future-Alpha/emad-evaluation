@@ -19,25 +19,57 @@ def clear():
     pass
 
 
+def grid_render(letter):
+    '''
+    screan --> grid 72x72
+    each point is one square from the grid
+    '''
+    grid_length = 72
+    opacity = 0.5
+    grid = np.ones((grid_length, grid_length, 4))
+    if letter == 'a':
+        grid[2][2]=[0,0,0,opacity]
+        grid[3][3]=[0,0,0,opacity]
+        grid[4][4]=[0,0,0,opacity]
+        grid[5][5]=[0,0,0,opacity]
+        grid[4][6]=[0,0,0,opacity]
+        grid[3][7]=[0,0,0,opacity]
+        grid[2][8]=[0,0,0,opacity]
+        grid[3][4]=[0,0,0,opacity]
+        grid[3][5]=[0,0,0,opacity]
+        grid[3][6]=[0,0,0,opacity]
+
+    if letter == 't':
+        grid[4][2]=[0,0,0,opacity]
+        grid[4][3]=[0,0,0,opacity]
+        grid[4][4]=[0,0,0,opacity]
+        grid[3][3]=[0,0,0,opacity]
+        grid[2][3]=[0,0,0,opacity]
+        grid[1][3]=[0,0,0,opacity]
+
+
+
+
+
+
+
 def evaluate(line_matrix, dots_matrix):
     """
-    screan --> grid 32x32
-    each point is one square from the grid
-    if the line went over all point squares in the right order --> pass
+    if the line went over all point squares in the right order: print (pass)
         else calculate the orecision
     """
-    grid_length = 32
-    grid = np.ones((grid_length, grid_length, 4))
 
-    # https://stackoverflow.com/questions/20402109/calculating-percentage-error-by-comparing-two-arrays
-    a = np.array([1, 2, 3, 4, 5, 6, 7])
-    b = np.array([1, 2, 3, 5, 5, 6, 7])
+    a = np.array(line_matrix)
+    b = np.array(dots_matrix)
     error = np.mean(a != b)
+    print(error)
 
     # or
-    import difflib
 
-    pr = difflib.SequenceMatcher(None, array1, array2)
+    import difflib
+    pr = difflib.SequenceMatcher(None, line_matrix, dots_matrix)
     print(pr.ratio())
 
-    pass
+
+
+evaluate([1, 2, 3, 4, 5, 6, 7],[1, 2, 3, 4, 5, 6, 7])
